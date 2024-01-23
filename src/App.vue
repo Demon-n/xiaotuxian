@@ -1,12 +1,19 @@
-<script setup>
+<template>
+  <router-view></router-view>
+</template>
+<script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
+import { ref } from 'vue'
+import { onMounted } from 'vue'
+
+
+
 </script>
 
-<template>
-  <HelloWorld msg="Hello World!" />
-</template>
-
-<style scoped>
+<style scoped lang="scss">
+.test {
+  color: $priceColor;
+}
 header {
   line-height: 1.5;
 }

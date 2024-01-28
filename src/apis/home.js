@@ -6,8 +6,16 @@ export function getBannerAPI() {
     })
 }
 
+//新鲜好物
 export const findNewAPI = () => {
     return httpInstance({
         url: '/home/new'
+    })
+}
+
+//人气推荐
+export const getHotAPI = () => {
+    return httpInstance({
+        url: '/home/hot'
     })
 }

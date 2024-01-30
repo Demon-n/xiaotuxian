@@ -3,6 +3,7 @@ import { getCategoryFilterAPI, getSubCategoryAPI } from '@/apis/catagory';
 import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue'
 import GoodsItems from '@/views/Home/components/GoodsItems.vue'
+import { disabledTimeListsProps } from 'element-plus/es/components/time-picker/src/props/shared';
 
 //获取面包屑导航数据
 const categoryData = ref({})
@@ -28,6 +29,24 @@ const getGoodList = async () => {
 onMounted(() => {
     getGoodList()
 })
+
+//tabChange的切换
+const tabChange = (() => {
+    console.log('tab切换了', reqData.value.sortFileld)
+    reqData.value.page = 1
+    getGoodList()
+})
+
+//加载更多
+const load = (async () => {
+    reqData.value.page++
+    const res = await getSubCategoryAPI(reqData.value)
+    goodList.value = [...goodList.value, ...res.result.items]
+    //加载完毕，停止监听
+    if (res.result.items.length === 0) {
+        disabled.value = true
+    }
+})
 </script>
 
 <template>
@@ -42,12 +61,12 @@ onMounted(() => {
             </el-breadcrumb>
         </div>
         <div class="sub-container">
-            <el-tabs>
+            <el-tabs v-model="reqData.sortFileld" @tab-change="tabChange">
                 <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
                 <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
                 <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
             </el-tabs>
-            <div class="body">
+            <div class="body" v-infinite-scroll="load">
                 <!-- 商品列表-->
                 <GoodsItems v-for="goods in goodList" :goods="goods" :key="goods.id" />
             </div>

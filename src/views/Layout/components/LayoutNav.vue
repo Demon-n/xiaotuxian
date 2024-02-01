@@ -30,7 +30,7 @@
 
 
 <style scoped lang="scss">
-.app-topnav {
+.app-topnav { 
   background: #333;
 
   ul {
@@ -56,7 +56,7 @@
         }
       }
 
-      ~li {
+      li {
         a {
           border-left: 2px solid #666;
         }

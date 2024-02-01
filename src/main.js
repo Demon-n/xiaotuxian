@@ -6,7 +6,10 @@ import 'element-plus/dist/index.css'
 import '@/styles/common.scss'
 import router from './router'
 import { createPinia } from 'pinia'
+//引入全局组插件
 import { lazyPlugin } from '@/directives'
+//引入懒加载指令插件并且注册
+import { componentPlugin } from '@/components'
 
 
 const app = createApp(App)
@@ -14,7 +17,9 @@ const pinia = createPinia()
 app.use(router)
 app.use(ElementPlus)
 app.use(pinia)
-app.mount('#app')
 app.use(lazyPlugin)
+app.use(componentPlugin)
+app.mount('#app')
+
 
 

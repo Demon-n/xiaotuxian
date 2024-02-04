@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { loginAPI } from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
+import { useUserStore } from '@/stores/user'
 
 const form = ref({
     account: '',
@@ -33,6 +34,7 @@ const rules = {
         }
     ]
 }
+const userStore = useUserStore()
 
 const router = useRouter()
 //获取form实例做统一校验
@@ -43,7 +45,7 @@ const doLogin = () => {
     formRef.value.validate(async (valid) => {
         //valid：所有表单都通过校验 才为true
         if (valid) {
-            const res = await loginAPI({ account, password })
+            const res = await userStore.getUserInfo({ account, password })
             console.log(res)
             //1.提示用户
             ElMessage({

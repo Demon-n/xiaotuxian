@@ -2,7 +2,6 @@
   <router-view></router-view>
 </template>
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
 import { ref } from 'vue'
 import { onMounted } from 'vue'
 
@@ -14,6 +13,7 @@ import { onMounted } from 'vue'
 .test {
   color: $priceColor;
 }
+
 header {
   line-height: 1.5;
 }
@@ -39,5 +39,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-} 
+}
 </style>

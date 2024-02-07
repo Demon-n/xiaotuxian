@@ -34,7 +34,7 @@ const addCart = () => {
         //规则已经选择 触发action
         catStore.addCart({
             id: goods.value.id,
-            name: goods.name,
+            name: goods.value.name,
             picture: goods.value.mainPictures[0],
             price: goods.value.price,
             count: count.value,

@@ -5,7 +5,7 @@ import LayoutHeader from './components/LayoutHeader.vue'
 import LayoutFooter from './components/LayoutFooter.vue'
 
 //触发获取导航列表的action
-import { useCategoryStore } from '@/stores/category'
+import { useCategoryStore } from '@/stores/categoryStore'
 import { onMounted } from 'vue'
 
 const categoryStore = useCategoryStore()
@@ -22,4 +22,4 @@ onMounted(() => {
   <!-- <RouterView :key="$route.fullPath" /> -->
   <RouterView />
   <LayoutFooter />
-</template>
+</template>@/stores/categoryStore

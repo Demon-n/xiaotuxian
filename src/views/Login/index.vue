@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { loginAPI } from '@/apis/user'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/userStore'
 
 const form = ref({
     account: '',
@@ -342,4 +342,4 @@ const doLogin = () => {
     width: 100%;
     color: #fff;
 }
-</style>
+</style>@/stores/userStore

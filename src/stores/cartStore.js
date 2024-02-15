@@ -61,6 +61,9 @@ export const useCartStore = defineStore('cart', () => {
         cartList.value = []
     }
 
+    //合并购物车的操作
+
+
     //单选功能
     const singleCheck = (skuId, selected) => {
         //通过skuId找到要修改的那一项 然后把它的selected赋值为新传过来的selected
@@ -100,7 +103,8 @@ export const useCartStore = defineStore('cart', () => {
         delCart,
         singleCheck,
         clearCart,
-        allCheck
+        allCheck,
+        updateNewList
     }
 },
     {

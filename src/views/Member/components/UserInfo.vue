@@ -1,5 +1,17 @@
 <script setup>
-const userStore = {}
+import { useUserStore } from '@/stores/userStore'
+import { getLikeListAPI } from '@/apis/user'
+import { ref, onMounted } from 'vue'
+
+const userStore = useUserStore()
+const likeList = ref([])
+const getLikeList = async () => {
+    const res = await getLikeListAPI({ limit: 4 })
+    likeList.value = res.result
+}
+onMounted(() => {
+    getLikeList()
+})
 </script>
 
 <template>
